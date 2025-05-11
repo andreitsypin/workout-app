@@ -1,8 +1,11 @@
 package com.example.workout_tracker_app.model;
 
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.Objects;
 
+@Data
 public class WorkoutPlanExerciseId implements Serializable {
     private Long workoutPlanId;
     private Long exerciseId;

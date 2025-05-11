@@ -1,8 +1,10 @@
 package com.example.workout_tracker_app.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 @Entity
+@Data
 public class WorkoutResult {
 
     @Id
