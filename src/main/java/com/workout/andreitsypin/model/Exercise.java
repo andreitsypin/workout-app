@@ -1,5 +1,7 @@
 package com.workout.andreitsypin.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.websocket.ClientEndpoint;
 import lombok.AllArgsConstructor;
@@ -22,6 +24,7 @@ public class Exercise {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "creator_id")
     private User creator;
@@ -30,6 +33,7 @@ public class Exercise {
     private String description;
     private String muscleGroup;
 
+    @JsonBackReference("exercise-plan")
     @OneToMany(mappedBy = "exercise", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<WorkoutPlanExercise> planAssociations = new ArrayList<>();
 
